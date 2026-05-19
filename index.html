@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>TO-DO list</title>
+  </head>
+  <body>
+    <!--* --------------HEADER----------------------- -->
+
+    <header id="header">
+      <h1>TO-DO</h1>
+      <h3>List</h3>
+    </header>
+    <div id="panelsBox">
+      <!--* --------------LEFT PANEL----------------------- -->
+
+      <aside id="listsPanel">
+        <div id="listingLists">
+          <h2>LISTS</h2>
+          <button id="newList" class="button newList">+</button>
+          <div id="emptyTitleList"></div>
+        </div>
+        <div id="listsBox"></div>
+        <button id="importLists" class="button import">Import</button>
+        <button id="saveLists" class="button save">Save</button>
+      </aside>
+
+      <!--* --------------MAIN PANEL----------------------- -->
+
+      <main id="activeListBox">
+        <div id="addTaskBox"></div>
+        <div id="activeList"></div>
+      </main>
+    </div>
+
+    <!--* --------------NEW LIST MENU----------------------- -->
+
+    <dialog id="addNewList">
+      <h2 id="titleNewList">New list</h2>
+      <label class="labelStyle"
+        >Basic style
+        <input
+          type="radio"
+          id="basicStyle"
+          class="stylesList"
+          name="style"
+          value="basic"
+        />
+      </label>
+
+      <label class="labelStyle"
+        >Weekly style
+        <input
+          type="radio"
+          id="weeklyStyle"
+          class="stylesList"
+          name="style"
+          value="weekly"
+        />
+      </label>
+
+      <label class="labelStyle"
+        >Grocery style
+        <input
+          type="radio"
+          id="groceryStyle"
+          class="stylesList"
+          name="style"
+          value="grocery"
+        />
+      </label>
+
+      <input type="text" id="listName" name="ListName" />
+      <button id="acceptNewList" class="button newList">Accept</button>
+      <button id="cancelNewList" class="button newList">Cancel</button>
+    </dialog>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+/**-----------------------COLORS--------------------------*/
+:root {
+  /*Basic style*/
+  --turquiose: #0fa3b1;
+  --beige: #d9e5d6;
+  --paleYellow: #eddea4;
+  --paleOrange: #f7a072;
+  --yellowOrange: #ff9b42;
+  /* Weekly list style
+  --palePink: #cbb3bf;
+  --pink: #ef959c;
+  --paleSalmon: #dbc7be;
+  /*Grocery list style*/
+  /* --boneWhite: #ebf5df;
+  --paleGreen: #bad4aa;
+  --paleGreenYellow: #d4d4a4; */
+}
+
+/**------------------------BASICS-------------------------*/
+* {
+  box-sizing: border-box; /* width + height doesn't take in account padding + margin*/
+}
+
+html {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 163, 177, 1) 13%,
+    rgba(247, 160, 114, 1) 76%,
+    rgba(255, 155, 66, 1) 100%
+  );
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body {
+  margin: 10px;
+  padding: 0;
+}
+
+#panelsBox {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 10px;
+}
+
+/**---------------------HEADER---------------------------*/
+
+#header {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 1200px;
+  margin: 10px 10px 10px 10px;
+}
+
+/**---------------------LEFT PANEL---------------------------*/
+
+#listsPanel {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  min-width: 150px;
+  margin: 10px;
+}
+/**---------------------MAIN PANEL---------------------------*/
+#activeListBox {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 70%;
+  max-width: 600px;
+  flex: 1;
+  margin: 10px;
+}
+
+/**---------------------BUTTONS---------------------------*/
+button {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--turquiose);
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: var(--yellowOrange);
+}
+/**---------------------TEXTBOX--------------------------*/
+input[type="text"] {
+  width: calc(100% - 100px);
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  margin-right: 1rem;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
