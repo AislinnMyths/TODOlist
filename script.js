@@ -124,6 +124,9 @@ cancelNewListBtn.addEventListener("click", () => {
   addNewListMenu.close();
 });
 
+saveListsBtn.addEventListener("click", () => {
+  exportLists();
+});
 //* --------------LOADING------------------
 
 function loadApp() {
@@ -421,6 +424,17 @@ function createTask() {
 function saveToLocalStorage() {
   localStorage.setItem("lists", JSON.stringify(lists));
   localStorage.setItem("activeList", JSON.stringify(activeList));
+}
+
+function exportLists() {
+  const json = JSON.stringify(lists, null, 2);
+  const blob = new Blob([json], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "my-TODO-lists.json";
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 //* ----------------INIT--------------------
