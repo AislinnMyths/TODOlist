@@ -127,6 +127,10 @@ cancelNewListBtn.addEventListener("click", () => {
 saveListsBtn.addEventListener("click", () => {
   exportLists();
 });
+
+importListsBtn.addEventListener("click", () =>{
+  importLists();
+});
 //* --------------LOADING------------------
 
 function loadApp() {
@@ -435,6 +439,28 @@ function exportLists() {
   a.download = "my-TODO-lists.json";
   a.click();
   URL.revokeObjectURL(url);
+}
+
+//*------------------IMPORT----------------
+
+function importLists() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.click();
+  input.addEventListener("change", function () {
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const data = JSON.parse(e.target.result);
+      lists = data;
+      activeList = lists[0] || null;
+      saveToLocalStorage();
+      renderListsPanel();
+      renderActiveList();
+    };
+    reader.readAsText(file);
+  });
 }
 
 //* ----------------INIT--------------------
