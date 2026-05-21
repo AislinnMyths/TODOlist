@@ -110,6 +110,14 @@ listsPanelEl.addEventListener("click", function (e) {
       { once: true },
     );
   }
+  const titleInput = e.target.closest("input[type='text']");
+  if (titleInput && titleInput.readOnly) {
+    const li = titleInput.closest("li");
+    const listId = Number(li.dataset.id);
+    activeList = lists.find((list) => list.id === listId);
+    renderListsPanel();
+    renderActiveList();
+  }
 });
 
 newList.addEventListener("click", () => {
@@ -128,7 +136,7 @@ saveListsBtn.addEventListener("click", () => {
   exportLists();
 });
 
-importListsBtn.addEventListener("click", () =>{
+importListsBtn.addEventListener("click", () => {
   importLists();
 });
 //* --------------LOADING------------------
