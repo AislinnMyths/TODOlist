@@ -72,6 +72,14 @@ activeListBox.addEventListener("click", function (e) {
       { once: true },
     );
   }
+
+  if (e.target.type === "checkbox") {
+    const li = e.target.closest("li");
+    const taskId = Number(li.dataset.id);
+    const task = activeList.tasks.find((task) => task.id === taskId);
+    task.completed = e.target.checked;
+    saveToLocalStorage();
+  }
 });
 
 listsPanelEl.addEventListener("click", function (e) {
@@ -139,6 +147,7 @@ saveListsBtn.addEventListener("click", () => {
 importListsBtn.addEventListener("click", () => {
   importLists();
 });
+
 //* --------------LOADING------------------
 
 function loadApp() {

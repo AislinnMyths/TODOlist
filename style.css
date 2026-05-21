@@ -90,6 +90,10 @@ body {
   margin: 10px;
 }
 
+input[type="checkbox"]:checked + input[type="text"] {
+    text-decoration: line-through;
+}
+
 /**---------------------BUTTONS---------------------------*/
 button {
   padding: 0.8rem 1rem;
