@@ -15,6 +15,7 @@ const radioGroceryStyle = document.getElementById("groceryStyle");
 const listName = document.getElementById("listName");
 const activeListTasks = document.getElementById("activeList");
 const addTaskBox = document.getElementById("addTaskBox");
+const activeListTitle = document.getElementById("activeListTitle");
 
 //* --------------GLOBAL VARIABLES------------------
 
@@ -148,6 +149,16 @@ importListsBtn.addEventListener("click", () => {
   importLists();
 });
 
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest("button");
+  if (btn) {
+    btn.classList.add("active");
+    setTimeout(() => {
+      btn.classList.remove("active");
+    }, 2000);
+  }
+});
+
 //* --------------LOADING------------------
 
 function loadApp() {
@@ -191,6 +202,7 @@ function renderActiveList() {
 
 function renderEmptyList() {
   activeListTasks.innerHTML = "";
+  activeListTitle.textContent = "";
   addTaskBox.innerHTML = "";
   const noListText = document.createElement("p");
   const noListBtn = document.createElement("button");
@@ -205,9 +217,7 @@ function renderEmptyList() {
 
 function renderBasicList() {
   activeListTasks.innerHTML = "";
-  const title = document.createElement("h3");
-  title.textContent = activeList.title;
-  activeListTasks.append(title);
+  activeListTitle.textContent = activeList.title;
   activeList.tasks.forEach((task) => {
     const li = document.createElement("li");
     const check = document.createElement("input");
@@ -232,9 +242,7 @@ function renderBasicList() {
 
 function renderWeeklyList() {
   activeListTasks.innerHTML = "";
-  const title = document.createElement("h3");
-  title.textContent = activeList.title;
-  activeListTasks.append(title);
+  activeListTitle.textContent = activeList.title;
   const weekGrid = document.createElement("div");
   weekGrid.className = "weekGrid";
 
@@ -276,9 +284,7 @@ function renderWeeklyList() {
 
 function renderGroceryList() {
   activeListTasks.innerHTML = "";
-  const title = document.createElement("h3");
-  title.textContent = activeList.title;
-  activeListTasks.append(title);
+  activeListTitle.textContent = activeList.title;
   const groceryGrid = document.createElement("div");
   groceryGrid.className = "groceryGrid";
 
@@ -333,10 +339,10 @@ function renderTaskInput() {
       createTask();
     });
     text.type = "text";
-    text.value = "";
+    text.placeholder = "Task text...";
     text.id = "taskTextInput";
-    addTaskBtn.innerHTML = "+";
-    addTaskBox.append(addTaskBtn, text);
+    addTaskBtn.innerHTML = "Add Task";
+    addTaskBox.append(text, addTaskBtn);
   } else if (activeList.style === "weekly") {
     addTaskBox.innerHTML = "";
     const addTaskBtn = document.createElement("button");
@@ -346,16 +352,16 @@ function renderTaskInput() {
       createTask();
     });
     text.type = "text";
-    text.value = "";
+    text.placeholder = "Task text...";
     text.id = "taskTextInput";
-    addTaskBtn.innerHTML = "+";
+    addTaskBtn.innerHTML = "Add Task";
     selectWeekly.id = "taskDaySelect";
     days.forEach((type) => {
       const daysOp = document.createElement("option");
       daysOp.textContent = type;
       selectWeekly.append(daysOp);
     });
-    addTaskBox.append(addTaskBtn, text, selectWeekly);
+    addTaskBox.append(text, selectWeekly, addTaskBtn);
   } else if (activeList.style === "grocery") {
     addTaskBox.innerHTML = "";
     const addTaskBtn = document.createElement("button");
@@ -365,16 +371,16 @@ function renderTaskInput() {
       createTask();
     });
     text.type = "text";
-    text.value = "";
+    text.placeholder = "Task text...";
     text.id = "taskTextInput";
-    addTaskBtn.innerHTML = "+";
+    addTaskBtn.innerHTML = "Add Task";
     selectGrocery.id = "taskCategorySelect";
     categories.forEach((type) => {
       const categoryOp = document.createElement("option");
       categoryOp.textContent = type;
       selectGrocery.append(categoryOp);
     });
-    addTaskBox.append(addTaskBtn, text, selectGrocery);
+    addTaskBox.append(text, selectGrocery, addTaskBtn);
   }
 }
 

@@ -23,7 +23,7 @@
       <aside id="listsPanel">
         <div id="listingLists">
           <h2>LISTS</h2>
-          <button id="newList" class="button newList">+</button>
+          <button id="newList" class="button newList">Add List</button>
           <div id="emptyTitleList"></div>
         </div>
         <div id="listsBox"></div>
@@ -34,6 +34,7 @@
       <!--* --------------MAIN PANEL----------------------- -->
 
       <main id="activeListBox">
+        <h3 id="activeListTitle"></h3>
         <div id="addTaskBox"></div>
         <div id="activeList"></div>
       </main>
@@ -76,7 +77,7 @@
         />
       </label>
 
-      <input type="text" id="listName" name="ListName" />
+      <input type="text" id="listName" name="ListName"  placeholder="List name..." />
       <button id="acceptNewList" class="button newList">Accept</button>
       <button id="cancelNewList" class="button newList">Cancel</button>
     </dialog>

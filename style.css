@@ -50,9 +50,15 @@ body {
   max-width: 1200px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-direction: row;
   margin: 10px;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  align-items: center;
 }
 
 /**---------------------HEADER---------------------------*/
@@ -91,7 +97,7 @@ body {
 }
 
 input[type="checkbox"]:checked + input[type="text"] {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 /**---------------------BUTTONS---------------------------*/
@@ -112,15 +118,130 @@ button {
 button:hover {
   background: var(--yellowOrange);
 }
+
+button.active {
+  background: var(--paleYellow) !important;
+}
+
+.editTask,
+.deleteTask {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+.editTitleList,
+.delList {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+}
 /**---------------------TEXTBOX--------------------------*/
 input[type="text"] {
-  width: calc(100% - 100px);
+  flex: 1;
   padding: 0.8rem;
   border-radius: 8px;
   border: none;
   outline: none;
+  background-color: var(--beige);
   font-size: 1rem;
   margin-right: 1rem;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"][readonly] {
+  background: transparent;
+  box-shadow: none;
+  cursor: default;
+}
+
+#listsBox input[type="text"] {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+}
+/**---------------------CHECKBOX--------------------------*/
+input[type="checkbox"] {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 3px;
+  border: 2px solid var(--turquiose);
+  background: var(--paleYellow);
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background: var(--paleOrange);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✓";
+  display: block;
+  text-align: center;
+  color: var(--turquiose);
+  font-size: 0.9rem;
+  line-height: 1.1rem;
+}
+
+/**---------------------SELECT MENU--------------------------*/
+select {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: var(--beige);
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/**---------------------GRID LISTS STYLE--------------------------*/
+/*---------------Weekly List------------------*/
+.weekGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  /* overflow: hidden; */
+}
+
+.dayBox {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  /* overflow: hidden; */
+  min-width: 0;
+}
+
+.sunday {
+  grid-column: span 2;
+}
+
+.weekGrid input[type="text"] {
+  width: 0;
+}
+
+/*---------------Grocery List------------------*/
+.groceryGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  /* overflow: hidden; */
+}
+
+.categoryBox {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  /* overflow: hidden; */
+  min-width: 0;
+}
+
+.household {
+  grid-column: span 2;
+}
+
+.groceryGrid input[type="text"] {
+  width: 0;
 }
