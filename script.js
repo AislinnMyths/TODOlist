@@ -408,6 +408,9 @@ function createList() {
 
 function createTask() {
   const taskText = document.querySelector("#taskTextInput").value;
+  if (!taskText.trim()) {
+    return;
+  }
   let newTaskObj;
   if (activeList.style === "basic") {
     newTaskObj = {
