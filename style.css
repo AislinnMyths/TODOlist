@@ -16,6 +16,135 @@
   --paleGreenYellow: #d4d4a4; */
 }
 
+/**------------------------FONTS-------------------------*/
+
+body {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  text-align: center;
+}
+
+.titleBox {
+  text-align: center;
+  text-transform: uppercase;
+  --border-sz: 2px;
+  --border-color: var(--paleOrange);
+  --bg-color: rgba(0, 0, 0, 0.1);
+}
+
+.titleLine2 {
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  font-size: 80px;
+  color: var(--paleOrange);
+  padding: 0px 30px;
+  border-left: var(--border-sz) solid var(--border-color);
+  border-right: var(--border-sz) solid var(--border-color);
+  background-color: var(--bg-color);
+  text-shadow:
+    -2px 2px 0px rgba(0, 0, 0, 0.4),
+    -4px 4px 0px rgba(0, 0, 0, 0.3),
+    -6px 6px 0px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+.titleLine1,
+.titleLine3 {
+  display: grid;
+  grid-template-columns: 1fr minmax(0px, max-content) 1fr;
+  grid-template-areas: "left text right";
+  min-height: var(--border-sz);
+}
+
+.titleLine1 span,
+.titleLine3 span {
+  grid-area: text;
+  padding: 0 15px;
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  letter-spacing: 6px;
+  color: #444;
+}
+
+.titleLine1::before,
+.titleLine1::after,
+.titleLine3::before,
+.titleLine3::after {
+  content: "";
+  display: block;
+  background-image: linear-gradient(
+    0deg,
+    var(--border-color),
+    var(--border-color)
+  );
+  background-size: 100% var(--border-sz);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.titleLine1,
+.titleLine2,
+.titleLine3 {
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.fancyTitle h1 {
+  margin: 0;
+}
+
+.titleLine3::before,
+.titleLine3::after {
+  background-position: top center;
+}
+
+.titleLine1 {
+  height: 12px;
+}
+
+.titleLine1::before,
+.titleLine1::after {
+  background-position: bottom center;
+}
+
+.titleLine1 span:empty {
+  display: none;
+}
+
+.titleLine3 span {
+  margin-top: -10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0 10px;
+}
+
+.titleLine1 {
+  grid-template-columns: 1fr 1fr;
+}
+
+#activeListTitle {
+  text-shadow:
+    -1px 1px 0px rgba(0, 0, 0, 0.3),
+    -2px 2px 0px rgba(0, 0, 0, 0.15);
+  background: rgba(15, 163, 177, 0.4);
+  border-radius: 8px;
+  padding: 5px 15px;
+}
+
+#listsPanel h2 {
+  text-shadow:
+    -1px 1px 0px rgba(0, 0, 0, 0.3),
+    -2px 2px 0px rgba(0, 0, 0, 0.15);
+}
+
 /**------------------------BASICS-------------------------*/
 * {
   box-sizing: border-box; /* width + height doesn't take in account padding + margin*/
@@ -61,6 +190,13 @@ li {
   align-items: center;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  color: #2d2d2d;
+}
+
 /**---------------------HEADER---------------------------*/
 
 #header {
@@ -73,6 +209,16 @@ li {
   margin: 10px 10px 10px 10px;
 }
 
+#listsBox li.active {
+  background: rgba(15, 163, 177, 0.2);
+  border-radius: 6px;
+  border-left: 3px solid var(--turquiose);
+  padding-left: 5px;
+}
+
+#listsBox li.active input[type="text"] {
+  font-weight: 600;
+}
 /**---------------------LEFT PANEL---------------------------*/
 
 #listsPanel {
@@ -83,6 +229,36 @@ li {
   width: 30%;
   min-width: 150px;
   margin: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#listsPanel h2 {
+  border-bottom: 3px solid var(--turquiose);
+  padding-bottom: 5px;
+}
+
+#listsBox {
+  margin-top: 1rem;
+  background: rgba(247, 160, 114, 0.2);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+#importLists {
+  margin-top: auto;
+}
+
+#importLists, #saveLists {
+  width: auto;
+  align-self: flex-start;
+}
+
+#listActions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
 }
 /**---------------------MAIN PANEL---------------------------*/
 #activeListBox {
@@ -244,4 +420,25 @@ select {
 
 .groceryGrid input[type="text"] {
   width: 0;
+}
+
+.dayBox h4,
+.categoryBox h4 {
+  background: rgba(15, 163, 177, 0.2);
+  padding: 0 10px 5px 10px;
+  border-bottom: 3px solid var(--turquiose);
+  border-radius: 8px;
+}
+
+/**---------------------DIALOG--------------------------*/
+dialog {
+  background: var(--beige);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
 }

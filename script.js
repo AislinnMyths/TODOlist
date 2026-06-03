@@ -185,9 +185,11 @@ function renderListsPanel() {
     delBtn.className = "delList";
     editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
     delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-    li.append(title);
-    li.append(editBtn);
-    li.append(delBtn);
+
+    if (activeList && list.id === activeList.id) {
+      li.classList.add("active");
+    }
+    li.append(title, editBtn, delBtn);
     listsBoxEl.append(li);
   });
 }
