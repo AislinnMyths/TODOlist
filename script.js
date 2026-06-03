@@ -109,21 +109,19 @@ listsPanelEl.addEventListener("click", function (e) {
     const nearbyBtns = textInput.closest("li").querySelectorAll("button");
     nearbyBtns.forEach((btn) => btn.setAttribute("tabindex", "-1"));
 
-    textInput.addEventListener(
-      "keyup",
-      function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (e.key === "Enter") {
-          nearbyBtns.forEach((btn) => btn.removeAttribute("tabindex"));
-          const list = lists.find((list) => list.id === listId);
-          list.title = textInput.value;
-          textInput.readOnly = true;
-          saveToLocalStorage();
-          renderListsPanel();
-          renderActiveList();
-        }
-      });
+    textInput.addEventListener("keyup", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.key === "Enter") {
+        nearbyBtns.forEach((btn) => btn.removeAttribute("tabindex"));
+        const list = lists.find((list) => list.id === listId);
+        list.title = textInput.value;
+        textInput.readOnly = true;
+        saveToLocalStorage();
+        renderListsPanel();
+        renderActiveList();
+      }
+    });
   }
   const titleInput = e.target.closest("input[type='text']");
   if (titleInput && titleInput.readOnly) {
@@ -227,22 +225,7 @@ function renderBasicList() {
   activeListTasks.innerHTML = "";
   activeListTitle.textContent = activeList.title;
   activeList.tasks.forEach((task) => {
-    const li = document.createElement("li");
-    const check = document.createElement("input");
-    const text = document.createElement("input");
-    const editTaskBtn = document.createElement("button");
-    const delTaskBtn = document.createElement("button");
-    li.dataset.id = task.id;
-    check.type = "checkbox";
-    check.checked = task.completed;
-    text.type = "text";
-    text.readOnly = true;
-    text.value = task.text;
-    editTaskBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
-    delTaskBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-    editTaskBtn.className = "editTask";
-    delTaskBtn.className = "deleteTask";
-    li.append(check, text, editTaskBtn, delTaskBtn);
+    const li = createTaskElement(task);
     activeListTasks.append(li);
   });
   renderTaskInput();
@@ -266,22 +249,7 @@ function renderWeeklyList() {
 
     const dayTasks = activeList.tasks.filter((task) => task.day === day);
     dayTasks.forEach((task) => {
-      const li = document.createElement("li");
-      const check = document.createElement("input");
-      const text = document.createElement("input");
-      const editTaskBtn = document.createElement("button");
-      const delTaskBtn = document.createElement("button");
-      li.dataset.id = task.id;
-      check.type = "checkbox";
-      check.checked = task.completed;
-      text.type = "text";
-      text.readOnly = true;
-      text.value = task.text;
-      editTaskBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
-      delTaskBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-      editTaskBtn.className = "editTask";
-      delTaskBtn.className = "deleteTask";
-      li.append(check, text, editTaskBtn, delTaskBtn);
+      const li = createTaskElement(task);
       dayBox.append(li);
     });
     weekGrid.append(dayBox);
@@ -308,22 +276,7 @@ function renderGroceryList() {
 
     const typeTasks = activeList.tasks.filter((task) => task.type === type);
     typeTasks.forEach((task) => {
-      const li = document.createElement("li");
-      const check = document.createElement("input");
-      const text = document.createElement("input");
-      const editTaskBtn = document.createElement("button");
-      const delTaskBtn = document.createElement("button");
-      li.dataset.id = task.id;
-      check.type = "checkbox";
-      check.checked = task.completed;
-      text.type = "text";
-      text.readOnly = true;
-      text.value = task.text;
-      editTaskBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
-      delTaskBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-      editTaskBtn.className = "editTask";
-      delTaskBtn.className = "deleteTask";
-      li.append(check, text, editTaskBtn, delTaskBtn);
+      const li = createTaskElement(task);
       categoryBox.append(li);
     });
     groceryGrid.append(categoryBox);
@@ -337,6 +290,26 @@ const renderStyleFunctions = {
   weekly: renderWeeklyList,
   grocery: renderGroceryList,
 };
+
+function createTaskElement(task) {
+  const li = document.createElement("li");
+  const check = document.createElement("input");
+  const text = document.createElement("input");
+  const editTaskBtn = document.createElement("button");
+  const delTaskBtn = document.createElement("button");
+  li.dataset.id = task.id;
+  check.type = "checkbox";
+  check.checked = task.completed;
+  text.type = "text";
+  text.readOnly = true;
+  text.value = task.text;
+  editTaskBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
+  delTaskBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+  editTaskBtn.className = "editTask";
+  delTaskBtn.className = "deleteTask";
+  li.append(check, text, editTaskBtn, delTaskBtn);
+  return li;
+}
 
 function renderTaskInput() {
   if (activeList.style === "basic") {
@@ -391,8 +364,6 @@ function renderTaskInput() {
     addTaskBox.append(text, selectGrocery, addTaskBtn);
   }
 }
-
-//TODO: - function createTaskElement(task), for common elements: li, check, text, editBtn, delBtn.
 
 //*------------------CREATE THINGS---------------
 
