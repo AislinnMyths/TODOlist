@@ -250,7 +250,8 @@ h4 {
   margin-top: auto;
 }
 
-#importLists, #saveLists {
+#importLists,
+#saveLists {
   width: auto;
   align-self: flex-start;
 }
@@ -441,4 +442,49 @@ dialog {
 
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.4);
+}
+
+#styleOptions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+#listNameBox {
+  display: flex;
+  align-items: center;
+}
+
+#titleNewList {
+  border-bottom: 3px solid var(--turquiose);
+  padding-bottom: 5px;
+  margin-bottom: 1rem;
+}
+
+/*-----------Radioo buttons-----------------*/
+
+input[type="radio"] {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  border: 2px solid var(--turquiose);
+  background: var(--paleYellow);
+  cursor: pointer;
+}
+
+input[type="radio"]:checked {
+  background: var(--paleOrange);
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--turquiose);
+  margin: auto;
+  margin-top: 3px;
 }

@@ -56,22 +56,24 @@ activeListBox.addEventListener("click", function (e) {
     const li = editBtn.closest("li");
     const taskId = Number(li.dataset.id);
     const textInput = li.querySelector("input[type='text']");
-    textInput.readOnly = false;
     textInput.focus();
+    textInput.readOnly = false;
 
-    textInput.addEventListener(
-      "keydown",
-      function (e) {
-        if (e.key === "Enter") {
-          const task = activeList.tasks.find((task) => task.id === taskId);
-          task.text = textInput.value;
-          textInput.readOnly = true;
-          saveToLocalStorage();
-          renderActiveList();
-        }
-      },
-      { once: true },
-    );
+    const nearbyBtns = textInput.closest("li").querySelectorAll("button");
+    nearbyBtns.forEach((btn) => btn.setAttribute("tabindex", "-1"));
+
+    textInput.addEventListener("keyup", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.key === "Enter") {
+        nearbyBtns.forEach((btn) => btn.removeAttribute("tabindex"));
+        const task = activeList.tasks.find((task) => task.id === taskId);
+        task.text = textInput.value;
+        textInput.readOnly = true;
+        saveToLocalStorage();
+        renderActiveList();
+      }
+    });
   }
 
   if (e.target.type === "checkbox") {
@@ -104,10 +106,16 @@ listsPanelEl.addEventListener("click", function (e) {
     textInput.readOnly = false;
     textInput.focus();
 
+    const nearbyBtns = textInput.closest("li").querySelectorAll("button");
+    nearbyBtns.forEach((btn) => btn.setAttribute("tabindex", "-1"));
+
     textInput.addEventListener(
-      "keydown",
+      "keyup",
       function (e) {
+        e.preventDefault();
+        e.stopPropagation();
         if (e.key === "Enter") {
+          nearbyBtns.forEach((btn) => btn.removeAttribute("tabindex"));
           const list = lists.find((list) => list.id === listId);
           list.title = textInput.value;
           textInput.readOnly = true;
@@ -115,9 +123,7 @@ listsPanelEl.addEventListener("click", function (e) {
           renderListsPanel();
           renderActiveList();
         }
-      },
-      { once: true },
-    );
+      });
   }
   const titleInput = e.target.closest("input[type='text']");
   if (titleInput && titleInput.readOnly) {

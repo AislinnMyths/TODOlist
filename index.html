@@ -60,47 +60,52 @@
 
     <dialog id="addNewList">
       <h2 id="titleNewList">New list</h2>
-      <label class="labelStyle"
-        >Basic style
-        <input
-          type="radio"
-          id="basicStyle"
-          class="stylesList"
-          name="style"
-          value="basic"
-        />
-      </label>
 
-      <label class="labelStyle"
-        >Weekly style
-        <input
-          type="radio"
-          id="weeklyStyle"
-          class="stylesList"
-          name="style"
-          value="weekly"
-        />
-      </label>
+      <div id="styleOptions">
+        <label class="labelStyle"
+          >Basic style
+          <input
+            type="radio"
+            id="basicStyle"
+            class="stylesList"
+            name="style"
+            value="basic"
+          />
+        </label>
 
-      <label class="labelStyle"
-        >Grocery style
-        <input
-          type="radio"
-          id="groceryStyle"
-          class="stylesList"
-          name="style"
-          value="grocery"
-        />
-      </label>
+        <label class="labelStyle"
+          >Weekly style
+          <input
+            type="radio"
+            id="weeklyStyle"
+            class="stylesList"
+            name="style"
+            value="weekly"
+          />
+        </label>
 
-      <input
-        type="text"
-        id="listName"
-        name="ListName"
-        placeholder="List name..."
-      />
-      <button id="acceptNewList" class="button newList">Accept</button>
-      <button id="cancelNewList" class="button newList">Cancel</button>
+        <label class="labelStyle"
+          >Grocery style
+          <input
+            type="radio"
+            id="groceryStyle"
+            class="stylesList"
+            name="style"
+            value="grocery"
+          />
+        </label>
+      </div>
+      
+      <div id="listNameBox">
+        <input
+          type="text"
+          id="listName"
+          name="ListName"
+          placeholder="List name..."
+        />
+        <button id="acceptNewList" class="button newList">Accept</button>
+        <button id="cancelNewList" class="button newList">Cancel</button>
+      </div>
     </dialog>
     <script src="script.js"></script>
   </body>
