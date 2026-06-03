@@ -1,19 +1,10 @@
 /**-----------------------COLORS--------------------------*/
 :root {
-  /*Basic style*/
-  --turquiose: #0fa3b1;
+  --turquoise: #0fa3b1;
   --beige: #d9e5d6;
   --paleYellow: #eddea4;
   --paleOrange: #f7a072;
   --yellowOrange: #ff9b42;
-  /* Weekly list style
-  --palePink: #cbb3bf;
-  --pink: #ef959c;
-  --paleSalmon: #dbc7be;
-  /*Grocery list style*/
-  /* --boneWhite: #ebf5df;
-  --paleGreen: #bad4aa;
-  --paleGreenYellow: #d4d4a4; */
 }
 
 /**------------------------FONTS-------------------------*/
@@ -23,131 +14,17 @@ body {
   font-weight: 300;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   font-family: "Outfit", sans-serif;
   font-weight: 600;
   text-align: center;
-}
-
-.titleBox {
-  text-align: center;
-  text-transform: uppercase;
-  --border-sz: 2px;
-  --border-color: var(--paleOrange);
-  --bg-color: rgba(0, 0, 0, 0.1);
-}
-
-.titleLine2 {
-  font-family: "Outfit", sans-serif;
-  font-weight: 600;
-  font-size: 80px;
-  color: var(--paleOrange);
-  padding: 0px 30px;
-  border-left: var(--border-sz) solid var(--border-color);
-  border-right: var(--border-sz) solid var(--border-color);
-  background-color: var(--bg-color);
-  text-shadow:
-    -2px 2px 0px rgba(0, 0, 0, 0.4),
-    -4px 4px 0px rgba(0, 0, 0, 0.3),
-    -6px 6px 0px rgba(0, 0, 0, 0.2);
-  margin: 0;
-}
-
-.titleLine1,
-.titleLine3 {
-  display: grid;
-  grid-template-columns: 1fr minmax(0px, max-content) 1fr;
-  grid-template-areas: "left text right";
-  min-height: var(--border-sz);
-}
-
-.titleLine1 span,
-.titleLine3 span {
-  grid-area: text;
-  padding: 0 15px;
-  font-family: "Outfit", sans-serif;
-  font-size: 16px;
-  letter-spacing: 6px;
-  color: #444;
-}
-
-.titleLine1::before,
-.titleLine1::after,
-.titleLine3::before,
-.titleLine3::after {
-  content: "";
-  display: block;
-  background-image: linear-gradient(
-    0deg,
-    var(--border-color),
-    var(--border-color)
-  );
-  background-size: 100% var(--border-sz);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.titleLine1,
-.titleLine2,
-.titleLine3 {
-  margin: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.fancyTitle h1 {
-  margin: 0;
-}
-
-.titleLine3::before,
-.titleLine3::after {
-  background-position: top center;
-}
-
-.titleLine1 {
-  height: 12px;
-}
-
-.titleLine1::before,
-.titleLine1::after {
-  background-position: bottom center;
-}
-
-.titleLine1 span:empty {
-  display: none;
-}
-
-.titleLine3 span {
-  margin-top: -10px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0 10px;
-}
-
-.titleLine1 {
-  grid-template-columns: 1fr 1fr;
-}
-
-#activeListTitle {
-  text-shadow:
-    -1px 1px 0px rgba(0, 0, 0, 0.3),
-    -2px 2px 0px rgba(0, 0, 0, 0.15);
-  background: rgba(15, 163, 177, 0.4);
-  border-radius: 8px;
-  padding: 5px 15px;
-}
-
-#listsPanel h2 {
-  text-shadow:
-    -1px 1px 0px rgba(0, 0, 0, 0.3),
-    -2px 2px 0px rgba(0, 0, 0, 0.15);
+  color: #2d2d2d;
 }
 
 /**------------------------BASICS-------------------------*/
+
 * {
-  box-sizing: border-box; /* width + height doesn't take in account padding + margin*/
+  box-sizing: border-box;
 }
 
 html {
@@ -170,73 +47,146 @@ body {
   padding: 0;
 }
 
-#panelsBox {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  flex-direction: row;
-  margin: 10px;
-}
-
 li {
   list-style: none;
   display: flex;
   align-items: center;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  color: #2d2d2d;
-}
+/**---------------------SHARED PANEL STYLE--------------------------*/
 
-/**---------------------HEADER---------------------------*/
-
-#header {
+/* Reusable glass-panel look used by header, panels, and dialog */
+#header,
+#panelsBox,
+#listsPanel,
+#activeListBox {
   background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+}
+
+#header,
+#panelsBox {
   width: 100%;
   max-width: 1200px;
-  margin: 10px 10px 10px 10px;
+  padding: 2rem;
 }
 
-#listsBox li.active {
-  background: rgba(15, 163, 177, 0.2);
-  border-radius: 6px;
-  border-left: 3px solid var(--turquiose);
-  padding-left: 5px;
+#listsPanel,
+#activeListBox {
+  padding: 2rem;
 }
 
-#listsBox li.active input[type="text"] {
-  font-weight: 600;
+/**---------------------LAYOUT--------------------------*/
+
+#panelsBox {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: row;
 }
-/**---------------------LEFT PANEL---------------------------*/
 
 #listsPanel {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   width: 30%;
   min-width: 150px;
-  margin: 10px;
-
   display: flex;
   flex-direction: column;
 }
 
+#activeListBox {
+  width: 70%;
+  max-width: 600px;
+  flex: 1;
+}
+
+/**---------------------HEADER TITLE--------------------------*/
+
+.titleBox {
+  text-align: center;
+  text-transform: uppercase;
+  --border-sz: 2px;
+  --border-color: var(--paleOrange);
+  --bg-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Shared properties for top and bottom decorative lines */
+.titleLine1,
+.titleLine3 {
+  display: grid;
+  grid-template-columns: 1fr minmax(0px, max-content) 1fr;
+  grid-template-areas: "left text right";
+  min-height: var(--border-sz);
+  margin: 0;
+  padding: 0;
+}
+
+/* Horizontal rule rendered via pseudo-elements on either side of the text */
+.titleLine1::before,
+.titleLine1::after,
+.titleLine3::before,
+.titleLine3::after {
+  content: "";
+  display: block;
+  background-image: linear-gradient(0deg, var(--border-color), var(--border-color));
+  background-size: 100% var(--border-sz);
+  background-repeat: no-repeat;
+}
+
+/* Top line: rule sits at the bottom edge to connect with the main box */
+.titleLine1 {
+  height: 12px;
+  grid-template-columns: 1fr 1fr; /* no center text, so use two equal columns */
+}
+
+.titleLine1::before,
+.titleLine1::after {
+  background-position: bottom center;
+}
+
+/* Bottom line: rule sits at the top edge to connect with the main box */
+.titleLine3::before,
+.titleLine3::after {
+  background-position: top center;
+}
+
+/* Main title text */
+.titleLine2 {
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  font-size: 80px;
+  color: var(--paleOrange);
+  padding: 0 30px;
+  margin: 0;
+  border-left: var(--border-sz) solid var(--border-color);
+  border-right: var(--border-sz) solid var(--border-color);
+  background-color: var(--bg-color);
+  text-shadow:
+    -2px 2px 0px rgba(0, 0, 0, 0.4),
+    -4px 4px 0px rgba(0, 0, 0, 0.3),
+    -6px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtitle "LIST" label centered on the bottom border line */
+.titleLine3 span {
+  grid-area: text;
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  letter-spacing: 6px;
+  color: #444;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0 10px;
+  margin-top: -10px;
+}
+
+/**---------------------LEFT PANEL--------------------------*/
+
 #listsPanel h2 {
-  border-bottom: 3px solid var(--turquiose);
+  border-bottom: 3px solid var(--turquoise);
   padding-bottom: 5px;
+  text-shadow:
+    -1px 1px 0px rgba(0, 0, 0, 0.3),
+    -2px 2px 0px rgba(0, 0, 0, 0.15);
 }
 
 #listsBox {
@@ -246,49 +196,52 @@ h4 {
   padding: 0.5rem;
 }
 
-#importLists {
-  margin-top: auto;
+/* Highlight the currently active list */
+#listsBox li.active {
+  background: rgba(15, 163, 177, 0.2);
+  border-radius: 6px;
+  border-left: 3px solid var(--turquoise);
+  padding-left: 5px;
 }
 
-#importLists,
-#saveLists {
-  width: auto;
-  align-self: flex-start;
+#listsBox li.active input[type="text"] {
+  font-weight: 600;
 }
 
+/* Import/Save buttons pinned to the bottom of the panel */
 #listActions {
   margin-top: auto;
   display: flex;
   flex-direction: row;
 }
-/**---------------------MAIN PANEL---------------------------*/
-#activeListBox {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  width: 70%;
-  max-width: 600px;
-  flex: 1;
-  margin: 10px;
+
+/**---------------------MAIN PANEL--------------------------*/
+
+#activeListTitle {
+  text-shadow:
+    -1px 1px 0px rgba(0, 0, 0, 0.3),
+    -2px 2px 0px rgba(0, 0, 0, 0.15);
+  background: rgba(15, 163, 177, 0.4);
+  border-radius: 8px;
+  padding: 5px 15px;
 }
 
 input[type="checkbox"]:checked + input[type="text"] {
   text-decoration: line-through;
 }
 
-/**---------------------BUTTONS---------------------------*/
+/**---------------------BUTTONS--------------------------*/
+
 button {
   padding: 0.8rem 1rem;
   border-radius: 8px;
   border: none;
-  background: var(--turquiose);
+  background: var(--turquoise);
   color: black;
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.3s;
   margin: 5px;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -296,22 +249,23 @@ button:hover {
   background: var(--yellowOrange);
 }
 
+/* Visual feedback when a button is clicked */
 button.active {
   background: var(--paleYellow) !important;
 }
 
-.editTask,
-.deleteTask {
+.editTask, .deleteTask {
   padding: 0.4rem 0.6rem;
   font-size: 0.85rem;
 }
 
-.editTitleList,
-.delList {
+.editTitleList, .delList {
   padding: 0.3rem 0.5rem;
   font-size: 0.8rem;
 }
-/**---------------------TEXTBOX--------------------------*/
+
+/**---------------------TEXT INPUTS--------------------------*/
+
 input[type="text"] {
   flex: 1;
   padding: 0.8rem;
@@ -321,28 +275,31 @@ input[type="text"] {
   background-color: var(--beige);
   font-size: 1rem;
   margin-right: 1rem;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* Hide styling when input is read-only (display mode, not edit mode) */
 input[type="text"][readonly] {
   background: transparent;
   box-shadow: none;
   cursor: default;
 }
 
+/* Constrain list title inputs so they don't overflow the panel */
 #listsBox input[type="text"] {
   width: auto;
   flex: 1;
   min-width: 0;
 }
-/**---------------------CHECKBOX--------------------------*/
+
+/**---------------------CHECKBOXES--------------------------*/
+
 input[type="checkbox"] {
   appearance: none;
   width: 1.2rem;
   height: 1.2rem;
   border-radius: 3px;
-  border: 2px solid var(--turquiose);
+  border: 2px solid var(--turquoise);
   background: var(--paleYellow);
   cursor: pointer;
 }
@@ -355,12 +312,13 @@ input[type="checkbox"]:checked::after {
   content: "✓";
   display: block;
   text-align: center;
-  color: var(--turquiose);
+  color: var(--turquoise);
   font-size: 0.9rem;
   line-height: 1.1rem;
 }
 
-/**---------------------SELECT MENU--------------------------*/
+/**---------------------SELECT MENUS--------------------------*/
+
 select {
   padding: 0.8rem;
   border-radius: 8px;
@@ -372,66 +330,49 @@ select {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/**---------------------GRID LISTS STYLE--------------------------*/
-/*---------------Weekly List------------------*/
-.weekGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  width: 100%;
-  /* overflow: hidden; */
-}
+/**---------------------GRID LIST STYLES--------------------------*/
 
-.dayBox {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 1rem;
-  /* overflow: hidden; */
-  min-width: 0;
-}
-
-.sunday {
-  grid-column: span 2;
-}
-
-.weekGrid input[type="text"] {
-  width: 0;
-}
-
-/*---------------Grocery List------------------*/
+/* Shared grid layout for weekly and grocery lists */
+.weekGrid,
 .groceryGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   width: 100%;
-  /* overflow: hidden; */
 }
 
+/* Shared box style for day and category groups */
+.dayBox,
 .categoryBox {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 1rem;
-  /* overflow: hidden; */
-  min-width: 0;
+  min-width: 0; /* allows flex children to shrink below their content size */
 }
 
-.household {
-  grid-column: span 2;
-}
-
-.groceryGrid input[type="text"] {
-  width: 0;
-}
-
+/* Shared heading style for day and category labels */
 .dayBox h4,
 .categoryBox h4 {
   background: rgba(15, 163, 177, 0.2);
   padding: 0 10px 5px 10px;
-  border-bottom: 3px solid var(--turquiose);
+  border-bottom: 3px solid var(--turquoise);
   border-radius: 8px;
 }
 
+/* Fix text input width inside grids to prevent overflow */
+.weekGrid input[type="text"],
+.groceryGrid input[type="text"] {
+  width: 0;
+}
+
+/* Sunday and household span both columns as they have no paired day/category */
+.sunday,
+.household {
+  grid-column: span 2;
+}
+
 /**---------------------DIALOG--------------------------*/
+
 dialog {
   background: var(--beige);
   border: none;
@@ -442,6 +383,12 @@ dialog {
 
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.4);
+}
+
+#titleNewList {
+  border-bottom: 3px solid var(--turquoise);
+  padding-bottom: 5px;
+  margin-bottom: 1rem;
 }
 
 #styleOptions {
@@ -456,20 +403,14 @@ dialog::backdrop {
   align-items: center;
 }
 
-#titleNewList {
-  border-bottom: 3px solid var(--turquiose);
-  padding-bottom: 5px;
-  margin-bottom: 1rem;
-}
-
-/*-----------Radioo buttons-----------------*/
+/**---------------------RADIO BUTTONS--------------------------*/
 
 input[type="radio"] {
   appearance: none;
   width: 1.2rem;
   height: 1.2rem;
   border-radius: 50%;
-  border: 2px solid var(--turquiose);
+  border: 2px solid var(--turquoise);
   background: var(--paleYellow);
   cursor: pointer;
 }
@@ -478,28 +419,29 @@ input[type="radio"]:checked {
   background: var(--paleOrange);
 }
 
+/* Inner dot indicator for selected radio */
 input[type="radio"]:checked::after {
   content: "";
   display: block;
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: var(--turquiose);
+  background: var(--turquoise);
   margin: auto;
   margin-top: 3px;
 }
 
-/**---------------------MOBILE STYLE--------------------------*/
+/**---------------------RESPONSIVE — MOBILE--------------------------*/
 
 @media (max-width: 768px) {
   #panelsBox {
     flex-direction: column;
   }
-  
+
   #listsPanel {
     width: 100%;
   }
-  
+
   #activeListBox {
     width: 100%;
     max-width: 100%;
