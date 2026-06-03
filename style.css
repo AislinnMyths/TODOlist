@@ -14,7 +14,10 @@ body {
   font-weight: 300;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: "Outfit", sans-serif;
   font-weight: 600;
   text-align: center;
@@ -128,7 +131,11 @@ li {
 .titleLine3::after {
   content: "";
   display: block;
-  background-image: linear-gradient(0deg, var(--border-color), var(--border-color));
+  background-image: linear-gradient(
+    0deg,
+    var(--border-color),
+    var(--border-color)
+  );
   background-size: 100% var(--border-sz);
   background-repeat: no-repeat;
 }
@@ -137,6 +144,10 @@ li {
 .titleLine1 {
   height: 12px;
   grid-template-columns: 1fr 1fr; /* no center text, so use two equal columns */
+}
+
+.titleLine1 span:empty {
+  display: none;
 }
 
 .titleLine1::before,
@@ -254,12 +265,14 @@ button.active {
   background: var(--paleYellow) !important;
 }
 
-.editTask, .deleteTask {
+.editTask,
+.deleteTask {
   padding: 0.4rem 0.6rem;
   font-size: 0.85rem;
 }
 
-.editTitleList, .delList {
+.editTitleList,
+.delList {
   padding: 0.3rem 0.5rem;
   font-size: 0.8rem;
 }
