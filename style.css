@@ -488,3 +488,20 @@ input[type="radio"]:checked::after {
   margin: auto;
   margin-top: 3px;
 }
+
+/**---------------------MOBILE STYLE--------------------------*/
+
+@media (max-width: 768px) {
+  #panelsBox {
+    flex-direction: column;
+  }
+  
+  #listsPanel {
+    width: 100%;
+  }
+  
+  #activeListBox {
+    width: 100%;
+    max-width: 100%;
+  }
+}
